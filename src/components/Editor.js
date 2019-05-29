@@ -1,5 +1,4 @@
 import { h, Component } from 'preact';
-import { Executor } from '../../lib/Executor';
 
 import CodeMirror from 'codemirror';
 import 'codemirror/mode/javascript/javascript';
@@ -10,10 +9,10 @@ import 'style-loader!css-loader!codemirror/lib/codemirror.css';
 
 export class Editor extends Component {
   componentDidMount() {
+    const onChange = this.props.onChange || (() => null);
     const editor = new CodeMirror(this.base, {
       value: localStorage.getItem('value') || ''
     });
-
 
     editor.setOption('mode', 'javascript');
     editor.setOption('autoCloseBrackets', true);
@@ -46,9 +45,7 @@ export class Editor extends Component {
 
 
     function run(code) {
-      Executor
-        .run(code)
-        .map((logEntity) => console[logEntity.level](...logEntity.args));
+      onChange(code);
     }
   }
 
