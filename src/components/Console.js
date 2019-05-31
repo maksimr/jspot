@@ -10,5 +10,10 @@ export function Console(props) {
         opacity: '0.5'
       }
     },
-    ...entities.map((logEntity) => h('div', null, logEntity.text())));
+    ...entities.map((logEntity) => {
+      const isError = logEntity.level === 'error';
+      return h('div', {
+        style: { color: isError ? 'red' : null }
+      }, logEntity.text())
+    }));
 };
