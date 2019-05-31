@@ -7,7 +7,7 @@ doRender();
 function doRender(entities) {
   const rootNode = document.getElementById('app');
   render(h(App, {
-    onChange: doEval,
+    onRun: doEval,
     entities: entities
   }), rootNode, rootNode.lastChild);
 }
