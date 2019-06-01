@@ -7,6 +7,7 @@ import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/hint/javascript-hint';
 import 'style-loader!css-loader!codemirror/lib/codemirror.css';
 import 'style-loader!css-loader!codemirror/theme/darcula.css';
+import 'style-loader!css-loader!codemirror/addon/hint/show-hint.css';
 
 export class Editor extends Component {
   componentDidMount() {
@@ -30,7 +31,7 @@ export class Editor extends Component {
     const javascriptHint = CodeMirror.helpers['hint']['javascript'];
     CodeMirror.registerHelper('hint', 'javascript', (...args) => {
       const hints = javascriptHint(...args);
-      if (hints.list && hints.list.length > 3) hints.list.length = 3;
+      if (hints && hints.list && hints.list.length > 3) hints.list.length = 3;
       return hints;
     });
 
