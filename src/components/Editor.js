@@ -6,6 +6,7 @@ import 'codemirror/addon/edit/closebrackets';
 import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/hint/javascript-hint';
 import 'style-loader!css-loader!codemirror/lib/codemirror.css';
+import 'style-loader!css-loader!codemirror/theme/darcula.css';
 
 export class Editor extends Component {
   componentDidMount() {
@@ -13,6 +14,7 @@ export class Editor extends Component {
     const editor = new CodeMirror(this.base, {value: props.value});
 
 
+    editor.setOption('theme', 'darcula');
     editor.setOption('mode', 'javascript');
     editor.setOption('autoCloseBrackets', true);
     editor.setOption('viewportMargin', Infinity);
