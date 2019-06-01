@@ -20,8 +20,8 @@ export class Editor extends Component {
     editor.setSize(null, 'auto');
     editor.setOption('hintOptions', {
       completeSingle: false,
-      extraKeys: {
-        Enter: null
+      customKeys: {
+        Tab: (cm, handle) => handle.pick()
       }
     });
 
