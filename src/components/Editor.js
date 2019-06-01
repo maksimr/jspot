@@ -33,13 +33,13 @@ export class Editor extends Component {
 
 
     editor.on('keyup', () => {
-      editor.execCommand('autocomplete')
+      editor.execCommand('autocomplete');
     });
 
 
     editor.on('change', () => {
       const value = editor.getDoc().getValue();
-      localStorage.setItem('value', value)
+      localStorage.setItem('value', value);
       run(value);
     });
 
@@ -56,4 +56,4 @@ export class Editor extends Component {
   render() {
     return h('div');
   }
-};
+}

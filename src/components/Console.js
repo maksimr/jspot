@@ -13,7 +13,7 @@ export function Console(props) {
     ...entities.map((logEntity) => {
       const isError = logEntity.level === 'error';
       return h('div', {
-        style: { color: isError ? 'red' : null }
-      }, logEntity.text())
+        style: {color: isError ? 'red' : null}
+      }, logEntity.text());
     }));
-};
+}

@@ -4,7 +4,7 @@ import { Console } from './Console';
 
 export function App(props) {
   return h('div', null,
-    h(Editor, { onRun: props.onRun }),
-    h(Console, { entities: props.entities })
+    h(Editor, {onRun: props.onRun}),
+    h(Console, {entities: props.entities})
   );
-};
+}
