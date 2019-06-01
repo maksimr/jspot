@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { Component, h } from 'preact';
 
 import CodeMirror from 'codemirror';
 import 'codemirror/mode/javascript/javascript';
@@ -9,7 +9,7 @@ import 'style-loader!css-loader!codemirror/lib/codemirror.css';
 
 export class Editor extends Component {
   componentDidMount() {
-    const onRun = this.props.onRun || (() => null);
+    const props = this.props;
     const editor = new CodeMirror(this.base, {
       value: localStorage.getItem('value') || ''
     });
@@ -51,7 +51,7 @@ export class Editor extends Component {
 
 
     function run(code) {
-      onRun(code);
+      if (props.onRun) props.onRun(code);
     }
   }
 
