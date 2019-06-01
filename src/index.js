@@ -4,6 +4,7 @@ import { Console } from '../lib/Console';
 import { App } from './components/App';
 
 const workerConsole = new Console();
+var worker = null;
 
 
 doRender();
@@ -22,8 +23,9 @@ function doRender() {
 
 
 function doEval(code) {
+  if (worker) worker.terminate();
   workerConsole.clear();
-  const worker = Executor.runAsync(code);
+  worker = Executor.runAsync(code);
   worker.addEventListener('message', rerenderAfter((it) => workerConsole.log(it.data)));
   worker.addEventListener('error', rerenderAfter((it) => workerConsole.error(it.message)));
   doRender();
