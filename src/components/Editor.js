@@ -10,9 +10,8 @@ import 'style-loader!css-loader!codemirror/lib/codemirror.css';
 export class Editor extends Component {
   componentDidMount() {
     const props = this.props;
-    const editor = new CodeMirror(this.base, {
-      value: localStorage.getItem('value') || ''
-    });
+    const editor = new CodeMirror(this.base, {value: props.value});
+
 
     editor.setOption('mode', 'javascript');
     editor.setOption('autoCloseBrackets', true);
@@ -25,12 +24,14 @@ export class Editor extends Component {
       }
     });
 
+
     const javascriptHint = CodeMirror.helpers['hint']['javascript'];
     CodeMirror.registerHelper('hint', 'javascript', (...args) => {
       const hints = javascriptHint(...args);
       if (hints.list && hints.list.length > 3) hints.list.length = 3;
       return hints;
     });
+
 
     editor.on('focus', () => {
       const value = editor.getDoc().getValue();
@@ -45,7 +46,7 @@ export class Editor extends Component {
 
     editor.on('change', () => {
       const value = editor.getDoc().getValue();
-      localStorage.setItem('value', value);
+      props.onChange && props.onChange(value);
       run(value);
     });
 

@@ -11,7 +11,10 @@ doRender();
 
 function doRender() {
   const rootNode = document.getElementById('app');
+  const value = getSavedValue();
   render(h(App, {
+    value: value,
+    onChange: saveValue,
     onRun: doEval,
     entities: workerConsole.queue()
   }), rootNode, rootNode.lastChild);
@@ -32,4 +35,14 @@ function rerenderAfter(fn) {
     fn(...args);
     doRender();
   };
+}
+
+
+function getSavedValue() {
+  return localStorage.getItem('value') || '';
+}
+
+
+function saveValue(value) {
+  localStorage.setItem('value', value);
 }
