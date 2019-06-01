@@ -2,6 +2,7 @@ import { h, render } from 'preact';
 import { Executor } from '../lib/Executor';
 import { Console } from '../lib/Console';
 import { App } from './components/App';
+
 const workerConsole = new Console();
 
 
@@ -30,5 +31,5 @@ function rerenderAfter(fn) {
   return (...args) => {
     fn(...args);
     doRender();
-  }
+  };
 }
