@@ -5,6 +5,9 @@
     "start": "webpack-dev-server --mode=development --devtool=eval-source-map --host=0.0.0.0 --disable-host-check=true"
   },
   "dependencies": {
+    "esprima": "4.0.1",
+    "escodegen": "1.11.1",
+    "estraverse": "4.2.0",
     "preact": "8.4.2",
     "codemirror": "5.47.0"
   },
