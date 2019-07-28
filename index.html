@@ -18,6 +18,14 @@
         margin: auto;
       }
 
+      .CodeMirror-line .hint {
+        padding: 0 8px;
+        background: #cae7ff;
+        color: #535353;
+        border-radius: 4px;
+        margin-left: 8px;
+      }
+
       body .CodeMirror-hints.darcula .CodeMirror-hint-active {
         background: #08f !important;
         color: white !important;
@@ -36,7 +44,6 @@
       }
 
       body .CodeMirror-hints, body .CodeMirror-hints.darcula {
-        opacity: 0.8;
         border: none !important;
         box-shadow: none !important;
         margin-left: calc(1em - 10vw);
@@ -44,7 +51,7 @@
     </style>
   </head>
 
-  <body class="cm-s-darcula CodeMirror">
+  <body class="CodeMirror">
     <div id="app"></div>
     <!--suppress HtmlUnknownTarget -->
     <script src="main.js" charset="utf-8"></script>
