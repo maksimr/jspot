@@ -25,10 +25,10 @@ function doEval(code) {
   process.addEventListener('message', (it) => {
     if (it.loc) {
       const line = it.loc.end.line;
-      const linode = document.querySelectorAll('.CodeMirror-line')[line - 1];
+      const lineNode = document.querySelectorAll('.CodeMirror-line')[line - 1];
       const textNode = lineNode.querySelector('.hint') || document.createElement('span');
       if (!textNode.classList.contains('hint')) textNode.classList.add('hint');
-      textNode.innerText = it.data.join(', ');
+      textNode.innerText = it.data.map((it) => JSON.stringify(it)).join(', ');
       lineNode.appendChild(textNode);
     }
   });
