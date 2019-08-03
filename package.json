@@ -2,7 +2,7 @@
   "name": "jspot",
   "version": "0.0.0",
   "scripts": {
-    "start": "webpack-dev-server --mode=development --devtool=eval-source-map --host=0.0.0.0 --disable-host-check=true"
+    "start": "webpack-dev-server --mode=development --devtool=inline-cheap-module-source-map --host=0.0.0.0 --disable-host-check=true"
   },
   "dependencies": {
     "esprima": "4.0.1",
