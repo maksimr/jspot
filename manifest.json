@@ -1,6 +1,6 @@
 {
-  "short_name": "Foo",
-  "name": "Foo",
+  "short_name": "Pod",
+  "name": "JSPod",
   "icons": [
     {
       "src": "/images/icons-192.png",
