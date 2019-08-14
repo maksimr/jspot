@@ -1,0 +1,1 @@
+# JSPod [![Build Status](https://travis-ci.org/maksimr/jspot.svg?branch=master)](https://travis-ci.org/maksimr/jspot)
