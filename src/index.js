@@ -22,16 +22,22 @@ function doRender() {
 function doEval(code) {
   if (process) process.terminate();
   process = Executor.runAsync(code);
-  process.addEventListener('message', (it) => {
-    if (it.loc) {
-      const line = it.loc.end.line;
-      const lineNode = document.querySelectorAll('.CodeMirror-line')[line - 1];
-      const textNode = lineNode.querySelector('.hint') || document.createElement('span');
-      if (!textNode.classList.contains('hint')) textNode.classList.add('hint');
-      textNode.innerText = it.data.map((it) => JSON.stringify(it)).join(', ');
-      lineNode.appendChild(textNode);
-    }
-  });
+  process.addEventListener('message', renderLogMessage);
   process.addEventListener('error', (it) => console.error(it.message));
   doRender();
+}
+
+
+function renderLogMessage(it) {
+  if (it.loc) {
+    const line = it.loc.end.line;
+    const lineNode = document.querySelectorAll('.CodeMirror-line')[line - 1];
+    const textNode = lineNode.querySelector('.hint') || document.createElement('span');
+    if (!textNode.classList.contains('hint')) textNode.classList.add('hint');
+    textNode.innerText = it.data.map((it) => JSON.stringify(it)).join(', ');
+
+    if (!lineNode.contains(textNode)) {
+      lineNode.appendChild(textNode);
+    }
+  }
 }
