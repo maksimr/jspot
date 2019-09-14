@@ -21,6 +21,7 @@ function doRender() {
 
 function doEval(code) {
   if (process) process.terminate();
+  removeAllRenderedLogMessages();
   process = Executor.runAsync(code);
   process.addEventListener('message', renderLogMessage);
   process.addEventListener('error', (it) => console.error(it.message));
@@ -40,4 +41,12 @@ function renderLogMessage(it) {
       lineNode.appendChild(textNode);
     }
   }
+}
+
+
+function removeAllRenderedLogMessages() {
+  Array.from(document.querySelectorAll('.CodeMirror-line .hint')).forEach((node) => {
+    node.parentNode.removeChild(node);
+    return node;
+  });
 }
